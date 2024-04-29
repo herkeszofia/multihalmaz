@@ -66,6 +66,9 @@ while True:
     elem = input("Adjon meg egy elemet (vagy üssön Enter-t a befejezéshez): ")
     if not elem:
         break
+    if not elem.isdigit():
+        print("Hibás adatot vittél be. Csak számokat lehet megadni.")
+        exit()
     darab = int(input("Adja meg az elem darabszámát: "))
     halmaz1.hozzaad(elem, darab)
 
@@ -75,9 +78,11 @@ while True:
     elem = input("Adjon meg egy másik elemet (vagy üssön Enter-t a befejezéshez): ")
     if not elem:
         break
+    if not elem.isdigit():
+        print("Hibás adatot vittél be. Csak számokat lehet megadni.")
+        exit()
     darab = int(input("Adja meg az elem darabszámát: "))
     halmaz2.hozzaad(elem, darab)
-
 
 print("Halmaz 1 elemei:")
 halmaz1.kiir()
@@ -94,13 +99,20 @@ metszet_halmaz = halmaz1.metszet(halmaz2)
 metszet_halmaz.kiir()
 
 print("Maximum halmaz 1-ben:", halmaz1.maximum())
+print("Maximum halmaz 2-ben:", halmaz2.maximum())
+
 print("Minimum halmaz 1-ben:", halmaz1.minimum())
+print("Minimum halmaz 2-ben:", halmaz2.minimum())
 
 keresett_elem = input("Adja meg az elemet, aminek a darabszámát szeretné tudni: ")
 print(f"{keresett_elem} darabszáma halmaz 1-ben:", halmaz1.darabszam(keresett_elem))
+print(f"{keresett_elem} darabszáma halmaz 2-ben:", halmaz2.darabszam(keresett_elem))
 
 keresett_elem = input("Adja meg az elemet, aminek a jelenlétét vizsgálja: ")
 print(f"Tartalmazza-e a(z) {keresett_elem}-et a halmaz 1?", keresett_elem in halmaz1)
+print(f"Tartalmazza-e a(z) {keresett_elem}-et a halmaz 2?", keresett_elem in halmaz2)
 
 print("Halmaz 1 üres?", halmaz1.ures_e())
+print("Halmaz 2 üres?", halmaz2.ures_e())
+
 print("Halmaz 1 és halmaz 2 diszjunkt?", halmaz1.diszjunkt_e(halmaz2))
